@@ -1,4 +1,7 @@
 # scorekeeper
+A toy app for tennis scores
+
+* A Vue.js Hello World app
 
 ## Project setup
 ```

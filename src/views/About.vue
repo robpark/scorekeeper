@@ -1,5 +1,11 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <img
+      alt="Scorekeeper"
+      src="../assets/tennis-ball.png"
+      height="100"
+      width="100"
+    />
+    <h2>About</h2>
   </div>
 </template>
