@@ -12,19 +12,27 @@
     </div>
     <div class="game">
       <table>
-        <tr>
+        <tr v-for="(game, idx) in match['sets'][0]['games']" :key="idx">
           <td class="game-count">{{ match["sets"][0]["result"][0] }} |</td>
-          <td class="point">{{ match["sets"][0]["games"][0][0][0] }}</td>
-          <td class="point">{{ match["sets"][0]["games"][0][1][0] }}</td>
-          <td class="point">{{ match["sets"][0]["games"][0][2][0] }}</td>
-          <td class="action"><button>wins point</button></td>
+          <td class="point" v-for="(gamePoints, idx) in game" :key="idx">
+            <span v-for="(point, idx) in gamePoints" :key="idx">
+              <span v-if="idx % 2 === 0">{{ point }}</span>
+            </span>
+          </td>
+          <td class="action">
+            <button>wins point</button>
+          </td>
         </tr>
-        <tr>
+        <tr v-for="(game, idx) in match['sets'][0]['games']" :key="idx">
           <td class="game-count">{{ match["sets"][0]["result"][1] }} |</td>
-          <td class="point">{{ match["sets"][0]["games"][0][0][1] }}</td>
-          <td class="point">{{ match["sets"][0]["games"][0][1][1] }}</td>
-          <td class="point">{{ match["sets"][0]["games"][0][2][1] }}</td>
-          <td class="action"><button>wins point</button></td>
+          <td class="point" v-for="(gamePoints, idx) in game" :key="idx">
+            <span v-for="(point, idx) in gamePoints" :key="idx">
+              <span v-if="idx % 2 === 1">{{ point }}</span>
+            </span>
+          </td>
+          <td class="action">
+            <button>wins point</button>
+          </td>
         </tr>
       </table>
     </div>
