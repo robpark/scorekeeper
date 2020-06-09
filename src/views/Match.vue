@@ -9,7 +9,7 @@
       <span v-for="(set, idx) in $store.getters.matches[0]['result']" :key="idx">
         {{ set }} <span v-if="idx === 0">-</span>
       </span>
-      <div v-for="(setScore, idx) in $store.getters.matches[0]['sets']" :key="idx" class="set">
+      <div v-for="(setScore, idx) in $store.getters.matches[0]['sets']" :key="'score' + idx">
         Set {{ idx + 1 }}: {{ setScore['result'] }} <br />
       </div>
     </div>
