@@ -1,14 +1,14 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import Vue from 'vue'
+import Vuex from 'vuex'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    players: ["Djokovic", "Federer", "Nadal"],
+    players: ['Djokovic', 'Federer', 'Nadal'],
     matches: [
       {
-        players: ["Federer", "Nadal"],
+        players: ['Federer', 'Nadal'],
         result: [2, 1],
         sets: [
           {
@@ -41,4 +41,4 @@ export default new Vuex.Store({
     players: state => state.players
   },
   modules: {}
-});
+})

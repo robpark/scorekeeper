@@ -1,11 +1,6 @@
 <template>
   <div class="home">
-    <img
-      alt="Scorekeeper"
-      src="../assets/tennis-ball.png"
-      height="100"
-      width="100"
-    />
+    <img alt="Scorekeeper" src="../assets/tennis-ball.png" height="100" width="100" />
     <h1>Scorekeeper</h1>
     <hr />
     <PlayerProfile ranking="4">
@@ -24,15 +19,15 @@
 
 <script>
 // @ is an alias to /src
-import PlayerProfile from "../components/PlayerProfile";
+import PlayerProfile from '../components/PlayerProfile'
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     PlayerProfile
   },
   created() {
-    console.log(this.$store);
+    console.log(this.$store)
   }
-};
+}
 </script>
