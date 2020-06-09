@@ -5,6 +5,8 @@
       |
       <router-link to="/match">Matches</router-link>
       |
+      <router-link to="/scorer">Scorer</router-link>
+      |
       <router-link to="/about">About</router-link>
     </div>
     <router-view />
