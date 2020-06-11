@@ -34,7 +34,14 @@ export default new Vuex.Store({
       }
     ],
     newMatch: {
-      players: ['Player 1', 'Player 2']
+      players: ['Player 1', 'Player 2'],
+      result: [0, 0],
+      sets: [
+        {
+          result: [0, 0],
+          games: [[0, 0]]
+        }
+      ]
     }
   },
   mutations: {

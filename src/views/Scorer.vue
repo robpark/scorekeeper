@@ -18,14 +18,14 @@
       </span>
     </div>
     <div class="sets">
-      <span v-for="(set, idx) in match.result" :key="idx">
+      <span v-for="(set, idx) in newMatchData.result" :key="idx">
         {{ set }} <span v-if="idx === 0">-</span>
       </span>
     </div>
     <div class="game">
-      <table v-for="(game, idx) in match['sets'][0]['games']" :key="idx">
+      <table v-for="(game, idx) in newMatchData['sets'][0]['games']" :key="idx">
         <tr>
-          <td class="game-count">{{ match['sets'][0]['result'][0] }} |</td>
+          <td class="game-count">{{ newMatchData['sets'][0]['result'][0] }} |</td>
           <td class="point" v-for="(gamePoints, idx) in game" :key="idx">
             <span v-for="(point, idx) in gamePoints" :key="idx">
               <span v-if="idx % 2 === 0">{{ point }}</span>
@@ -41,7 +41,7 @@
           </td>
         </tr>
         <tr>
-          <td class="game-count">{{ match['sets'][0]['result'][1] }} |</td>
+          <td class="game-count">{{ newMatchData['sets'][0]['result'][1] }} |</td>
           <td class="point" v-for="(gamePoints, idx) in game" :key="idx">
             <span v-for="(point, idx) in gamePoints" :key="idx">
               <span v-if="idx % 2 === 1">{{ point }}</span>
@@ -68,21 +68,6 @@ export default {
   name: 'Scorer',
   data() {
     return {
-      match: {
-        result: [0, 0],
-        sets: [
-          {
-            result: [1, 2],
-            games: [
-              [
-                [0, 15],
-                [15, 15],
-                [30, 15]
-              ]
-            ]
-          }
-        ]
-      },
       show: false,
       newMatchClicked: false
     };
