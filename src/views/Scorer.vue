@@ -1,5 +1,12 @@
 <template>
   <div class="scorer">
+    <div class="new-match">
+      <button @click="newMatch()">New Match ?</button>
+    </div>
+    <div v-if="newMatchClicked">
+      Select players
+    </div>
+    <div class="padding" />
     <div class="players">
       <span v-for="(player, idx) in players" :key="idx">
         {{ player }} <span v-if="idx === 0">-</span>
@@ -13,7 +20,7 @@
     <div class="game">
       <table v-for="(game, idx) in match['sets'][0]['games']" :key="idx">
         <tr>
-          <td class="game-count">{{ match["sets"][0]["result"][0] }} |</td>
+          <td class="game-count">{{ match['sets'][0]['result'][0] }} |</td>
           <td class="point" v-for="(gamePoints, idx) in game" :key="idx">
             <span v-for="(point, idx) in gamePoints" :key="idx">
               <span v-if="idx % 2 === 0">{{ point }}</span>
@@ -29,7 +36,7 @@
           </td>
         </tr>
         <tr>
-          <td class="game-count">{{ match["sets"][0]["result"][1] }} |</td>
+          <td class="game-count">{{ match['sets'][0]['result'][1] }} |</td>
           <td class="point" v-for="(gamePoints, idx) in game" :key="idx">
             <span v-for="(point, idx) in gamePoints" :key="idx">
               <span v-if="idx % 2 === 1">{{ point }}</span>
@@ -51,10 +58,10 @@
 
 <script>
 export default {
-  name: "scorer",
+  name: 'scorer',
   data() {
     return {
-      players: ["Federer", "Nadal"],
+      players: ['Federer', 'Nadal'],
       match: {
         result: [0, 0],
         sets: [
@@ -70,13 +77,23 @@ export default {
           }
         ]
       },
-      show: false
+      show: false,
+      newMatchClicked: false
     };
+  },
+  methods: {
+    newMatch() {
+      this.newMatchClicked = true;
+    }
   }
 };
 </script>
 
 <style scoped>
+.padding {
+  margin: 50px;
+}
+
 .scorer {
   border: 1px solid darkgreen;
 }

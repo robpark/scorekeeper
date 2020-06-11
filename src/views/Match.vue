@@ -1,15 +1,15 @@
 <template>
   <div class="match">
     <div class="players">
-      <span v-for="(player, idx) in $store.getters.matches[0]['players']" :key="idx">
+      <span v-for="(player, idx) in matchPlayers" :key="idx">
         {{ player }} <span v-if="idx === 0">-</span>
       </span>
     </div>
     <div class="sets">
-      <span v-for="(set, idx) in $store.getters.matches[0]['result']" :key="idx">
+      <span v-for="(set, idx) in this.matches[0]['result']" :key="idx">
         {{ set }} <span v-if="idx === 0">-</span>
       </span>
-      <div v-for="(setScore, idx) in $store.getters.matches[0]['sets']" :key="'score' + idx">
+      <div v-for="(setScore, idx) in this.matches[0]['sets']" :key="'score' + idx">
         Set {{ idx + 1 }}: {{ setScore['result'] }} <br />
       </div>
     </div>
@@ -17,9 +17,17 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
-  name: 'Match'
-}
+  name: 'Match',
+  computed: {
+    ...mapGetters(['matches']),
+    matchPlayers() {
+      return this.matches[0].players;
+    }
+  }
+};
 </script>
 
 <style scoped>
