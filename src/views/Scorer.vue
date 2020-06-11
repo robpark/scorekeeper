@@ -13,7 +13,7 @@
     </div>
     <div class="padding" />
     <div class="players">
-      <span v-for="(player, idx) in players" :key="idx">
+      <span v-for="(player, idx) in newMatchData['players']" :key="idx">
         {{ player }} <span v-if="idx === 0">-</span>
       </span>
     </div>

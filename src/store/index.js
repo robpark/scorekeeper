@@ -33,7 +33,9 @@ export default new Vuex.Store({
         ]
       }
     ],
-    newMatch: {}
+    newMatch: {
+      players: ['Player 1', 'Player 2']
+    }
   },
   mutations: {
     newMatchPlayers: (state, value) => (state.newMatch.players = value)
