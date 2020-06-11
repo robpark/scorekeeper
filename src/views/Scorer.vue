@@ -5,6 +5,11 @@
     </div>
     <div v-if="newMatchClicked">
       Select players
+      <span v-for="(player, idx) in players" :key="idx">
+        <input type="checkbox" :id="idx" :name="idx" :value="idx" :ref="`player${idx}`" />
+        <label :for="idx">{{ player }}</label>
+      </span>
+      <button @click="play()">Let's play</button>
     </div>
     <div class="padding" />
     <div class="players">
@@ -57,11 +62,12 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
-  name: 'scorer',
+  name: 'Scorer',
   data() {
     return {
-      players: ['Federer', 'Nadal'],
       match: {
         result: [0, 0],
         sets: [
@@ -81,9 +87,26 @@ export default {
       newMatchClicked: false
     };
   },
+  computed: {
+    ...mapGetters(['newMatchData', 'players'])
+  },
   methods: {
     newMatch() {
       this.newMatchClicked = true;
+    },
+    play() {
+      let selected = [
+        this.$refs['player0'][0].checked,
+        this.$refs['player1'][0].checked,
+        this.$refs['player2'][0].checked
+      ];
+      let playing = [];
+      for (let i = 0; i < this.players.length; i++) {
+        if (selected[i]) playing.push(this.players[i]);
+      }
+      console.log(selected);
+      console.log(playing);
+      this.$store.dispatch('addNewMatchPlayers', playing);
     }
   }
 };

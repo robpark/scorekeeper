@@ -32,13 +32,19 @@ export default new Vuex.Store({
           }
         ]
       }
-    ]
+    ],
+    newMatch: {}
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    newMatchPlayers: (state, value) => (state.newMatch.players = value)
+  },
+  actions: {
+    addNewMatchPlayers: ({ commit }, value) => commit('newMatchPlayers', value)
+  },
   getters: {
     matches: state => state.matches,
-    players: state => state.players
+    players: state => state.players,
+    newMatchData: state => state.newMatch
   },
   modules: {}
 });
