@@ -3,6 +3,8 @@
     <div id="nav">
       <router-link to="/">Home</router-link>
       |
+      <router-link to="/profile">Profiles</router-link>
+      |
       <router-link to="/match">Matches</router-link>
       |
       <router-link to="/scorer">Scorer</router-link>
