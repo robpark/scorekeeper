@@ -16,9 +16,7 @@
     </PlayerProfile>
     <hr />
     <ul>
-      <li v-for="user in users" :key="user.id">
-        {{ user.username }}: {{ user.email˚ }}
-      </li>
+      <li v-for="user in users" :key="user.id">{{ user.username }}: {{ user.email }}</li>
     </ul>
   </div>
 </template>
