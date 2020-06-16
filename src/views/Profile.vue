@@ -17,7 +17,7 @@
     <hr />
     <ul>
       <li v-for="user in users" :key="user.id">
-        {{ user.username }}
+        {{ user.username }}: {{ user.email˚ }}
       </li>
     </ul>
   </div>
