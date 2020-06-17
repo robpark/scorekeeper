@@ -1,9 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
-import Match from '../views/Match';
-import Scorer from '../views/Scorer';
-import Profile from '../views/Profile';
+import { authGuard } from '../auth';
 
 Vue.use(VueRouter);
 
@@ -11,29 +8,27 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
   },
   {
     path: '/profile',
     name: 'Profile',
-    component: Profile
+    component: () => import(/* webpackChunkName: "profile" */ '../views/Profile.vue')
   },
   {
     path: '/match',
     name: 'Match',
-    component: Match
+    component: () => import(/* webpackChunkName: "match" */ '../views/Match.vue')
   },
   {
     path: '/scorer',
     name: 'Scorer',
-    component: Scorer
+    component: () => import(/* webpackChunkName: "scorer" */ '../views/Scorer.vue'),
+    beforeEnter: authGuard
   },
   {
     path: '/about',
     name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: 'about' */ '../views/About.vue')
   }
 ];
