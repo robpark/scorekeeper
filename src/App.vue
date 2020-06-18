@@ -7,6 +7,8 @@
       |
       <router-link to="/match">Matches</router-link>
       |
+      <router-link to="/ranking">Rankings</router-link>
+      |
       <span v-if="$auth.isAuthenticated">
         <router-link to="/scorer">Scorer</router-link>
         |
