@@ -5,6 +5,7 @@ import store from './store';
 import axios from 'axios';
 import { Auth0Plugin } from './auth';
 import { domain, clientId } from '../auth_config.json';
+import vuetify from './plugins/vuetify';
 
 Vue.config.productionTip = false;
 Vue.prototype.$axios = axios;
@@ -20,5 +21,6 @@ Vue.use(Auth0Plugin, {
 new Vue({
   router,
   store,
+  vuetify,
   render: h => h(App)
 }).$mount('#app');

@@ -1,36 +1,28 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link>
-      |
-      <router-link to="/profile">Profiles</router-link>
-      |
-      <router-link to="/match">Matches</router-link>
-      |
-      <router-link to="/ranking">Rankings</router-link>
-      |
-      <span v-if="$auth.isAuthenticated">
-        <router-link to="/scorer">Scorer</router-link>
-        |
-      </span>
-      <router-link to="/about">About</router-link>
-      <div v-if="!$auth.isAuthenticated && !$auth.loading" class="nav-item">
-        <button id="qsLoginBtn" class="btn btn-primary btn-margin" @click.prevent="login">
-          Login
-        </button>
-      </div>
-      <div v-else class="nav-item">
-        <button id="qsLogoutBtn" class="btn btn-primary btn-margin" @click.prevent="logout">
-          Logout
-        </button>
-      </div>
-    </div>
-    <router-view />
-  </div>
+  <v-app>
+    <v-app-bar app color="light-green" dark shrink-on-scroll prominent>
+      <v-toolbar-title>Scorekeeper</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn text rounded to="/">Home</v-btn>
+      <v-btn text rounded to="/ranking">Rankings</v-btn>
+      <v-btn text rounded v-if="$auth.isAuthenticated" to="/scorer">Scorer</v-btn>
+      <v-btn text rounded to="/about">About</v-btn>
+      <v-btn text rounded v-if="!$auth.isAuthenticated && !$auth.loading" @click.prevent="login">
+        Login
+      </v-btn>
+      <v-btn text rounded v-else @click.prevent="logout">Logout</v-btn>
+    </v-app-bar>
+    <v-spacer></v-spacer>
+    <v-main>
+      <router-view />
+    </v-main>
+  </v-app>
 </template>
 
 <script>
 export default {
+  name: 'App',
+
   methods: {
     login() {
       this.$auth.loginWithRedirect();
@@ -39,29 +31,10 @@ export default {
       this.$auth.logout({ returnTo: 'http://localhost:8080' });
       // this.$router.push({ path: '/' });
     }
-  }
+  },
+
+  data: () => ({
+    //
+  })
 };
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
