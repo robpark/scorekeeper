@@ -1,6 +1,18 @@
 <template>
-  <div class="about">
-    <img alt="Scorekeeper" src="../assets/tennis-ball.png" height="100" width="100" />
-    <h2>About</h2>
-  </div>
+  <v-container>
+    <v-row justify="space-around" align="center">
+      <v-col cols="12" sm="4">
+        <v-card class="text-center pa-2" tile>
+          About
+        </v-card>
+      </v-col>
+    </v-row>
+    <v-row justify="center">
+      <v-col cols="12" sm="4">
+        <v-card class="pa-2" tile>
+          <v-img alt="Scorekeeper" src="../assets/tennis-ball.png" />
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
