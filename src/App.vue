@@ -4,7 +4,7 @@
       <v-toolbar-title>Scorekeeper</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn text rounded to="/">Home</v-btn>
-      <v-btn text rounded to="/ranking">Rankings</v-btn>
+      <v-btn text rounded v-if="$auth.isAuthenticated" to="/ranking">Rankings</v-btn>
       <v-btn text rounded v-if="$auth.isAuthenticated" to="/scorer">Scorer</v-btn>
       <v-btn text rounded to="/about">About</v-btn>
       <v-btn text rounded v-if="!$auth.isAuthenticated && !$auth.loading" @click.prevent="login">
@@ -16,6 +16,19 @@
     <v-main>
       <router-view />
     </v-main>
+    <v-footer dark padless>
+      <v-card class="flex" flat tile>
+        <v-card-title class="light-green">
+          <v-spacer></v-spacer>
+          <v-btn v-for="icon in icons" :key="icon" class="mx-4" dark icon>
+            <v-icon size="24px">{{ icon }}</v-icon>
+          </v-btn>
+        </v-card-title>
+        <v-card-text class="py-2 text-right light-green">
+          Scorekeeper &copy;{{ new Date().getFullYear() }}
+        </v-card-text>
+      </v-card>
+    </v-footer>
   </v-app>
 </template>
 
@@ -29,12 +42,11 @@ export default {
     },
     logout() {
       this.$auth.logout({ returnTo: 'http://localhost:8080' });
-      // this.$router.push({ path: '/' });
     }
   },
 
   data: () => ({
-    //
+    icons: ['mdi-twitter', 'mdi-linkedin', 'mdi-facebook', 'mdi-instagram']
   })
 };
 </script>

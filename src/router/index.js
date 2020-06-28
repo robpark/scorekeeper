@@ -23,7 +23,8 @@ const routes = [
   {
     path: '/ranking',
     name: 'Ranking',
-    component: () => import(/* webpackChunkName: "ranking" */ '../views/Ranking.vue')
+    component: () => import(/* webpackChunkName: "ranking" */ '../views/Ranking.vue'),
+    beforeEnter: authGuard
   },
   {
     path: '/scorer',

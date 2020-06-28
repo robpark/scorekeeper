@@ -3,7 +3,10 @@
     <v-row justify="space-around" align="center">
       <v-col cols="12" sm="4">
         <v-card class="text-center pa-2" tile>
-          About
+          Rob Park
+        </v-card>
+        <v-card class="text-center pa-2" tile>
+          4 Legs Software
         </v-card>
       </v-col>
     </v-row>
