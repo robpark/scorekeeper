@@ -25,7 +25,7 @@
           </v-btn>
         </v-card-title>
         <v-card-text class="py-2 text-right light-green">
-          Scorekeeper &copy;{{ new Date().getFullYear() }}
+          4 Legs Software &copy;{{ new Date().getFullYear() }}
         </v-card-text>
       </v-card>
     </v-footer>
@@ -46,7 +46,7 @@ export default {
   },
 
   data: () => ({
-    icons: ['mdi-twitter', 'mdi-linkedin', 'mdi-facebook', 'mdi-instagram']
+    icons: ['mdi-twitter', 'mdi-linkedin']
   })
 };
 </script>
