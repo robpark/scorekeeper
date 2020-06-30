@@ -23,7 +23,6 @@ export default {
     };
   },
   created() {
-    // const url = `http://api.sportradar.us/tennis-t2/en/players/rankings.json?api_key=${apiKey}`;
     const url = 'https://o74cc4ab99.execute-api.us-east-2.amazonaws.com/tennis-rankings-test';
     const config = {
       headers: { 'content-type': 'application/json' }
@@ -32,7 +31,6 @@ export default {
     this.$axios.get(url, config).then(response => {
       let data = response.data;
       console.log(data);
-      // debugger;
       this.rankings = data.rankings;
     });
   }
