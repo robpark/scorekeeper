@@ -16,26 +16,16 @@
     <v-main>
       <router-view />
     </v-main>
-    <v-footer dark padless>
-      <v-card class="flex" flat tile>
-        <v-card-title class="light-green">
-          <v-spacer></v-spacer>
-          <v-btn v-for="icon in icons" :key="icon" class="mx-4" dark icon>
-            <v-icon size="24px">{{ icon }}</v-icon>
-          </v-btn>
-        </v-card-title>
-        <v-card-text class="py-2 text-right light-green">
-          4 Legs Software &copy;{{ new Date().getFullYear() }}
-        </v-card-text>
-      </v-card>
-    </v-footer>
+    <Footer />
   </v-app>
 </template>
 
 <script>
+import Footer from './components/Footer';
+
 export default {
   name: 'App',
-
+  components: { Footer },
   methods: {
     login() {
       this.$auth.loginWithRedirect();
@@ -43,10 +33,6 @@ export default {
     logout() {
       this.$auth.logout({ returnTo: 'http://localhost:8080' });
     }
-  },
-
-  data: () => ({
-    icons: ['mdi-twitter', 'mdi-linkedin']
-  })
+  }
 };
 </script>
