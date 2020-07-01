@@ -42,18 +42,36 @@ export default new Vuex.Store({
           games: [[0, 0]]
         }
       ]
-    }
+    },
+    rankings: []
   },
   mutations: {
-    newMatchPlayers: (state, value) => (state.newMatch.players = value)
+    newMatchPlayers: (state, value) => (state.newMatch.players = value),
+    setRankings: (state, payload) => (state.rankings = payload)
   },
   actions: {
-    addNewMatchPlayers: ({ commit }, value) => commit('newMatchPlayers', value)
+    addNewMatchPlayers: ({ commit }, value) => commit('newMatchPlayers', value),
+    setRankings({ commit }) {
+      const url = 'https://o74cc4ab99.execute-api.us-east-2.amazonaws.com/tennis-rankings-test';
+      const config = {
+        headers: { 'content-type': 'application/json' }
+      };
+
+      Vue.prototype.$axios
+        .get(url, config)
+        .then(response => {
+          commit('setRankings', response.data.rankings);
+        })
+        .catch(function(error) {
+          console.log(error.config);
+        });
+    }
   },
   getters: {
     matches: state => state.matches,
     players: state => state.players,
-    newMatchData: state => state.newMatch
+    newMatchData: state => state.newMatch,
+    getRankings: state => state.rankings
   },
   modules: {}
 });

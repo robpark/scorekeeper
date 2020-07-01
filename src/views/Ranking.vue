@@ -2,7 +2,7 @@
   <div class="rankings">
     <h1>Rankings</h1>
     <ul>
-      <li v-for="ranking in rankings" :key="ranking.id">
+      <li v-for="ranking in getRankings" :key="ranking.id">
         {{ ranking.name }}
         <ul>
           <li v-for="playerRanking in ranking.player_rankings" :key="playerRanking.id">
@@ -15,29 +15,21 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
+
 export default {
   name: 'Ranking',
   data() {
-    return {
-      rankings: []
-    };
+    return {};
+  },
+  computed: {
+    ...mapGetters(['getRankings'])
+  },
+  methods: {
+    ...mapActions(['setRankings'])
   },
   created() {
-    const url = 'https://o74cc4ab99.execute-api.us-east-2.amazonaws.com/tennis-rankings-test';
-    const config = {
-      headers: { 'content-type': 'application/json' }
-    };
-
-    this.$axios
-      .get(url, config)
-      .then(response => {
-        let data = response.data;
-        console.log(data);
-        this.rankings = data.rankings;
-      })
-      .catch(function(error) {
-        console.log(error.config);
-      });
+    this.setRankings();
   }
 };
 </script>
