@@ -28,11 +28,16 @@ export default {
       headers: { 'content-type': 'application/json' }
     };
 
-    this.$axios.get(url, config).then(response => {
-      let data = response.data;
-      console.log(data);
-      this.rankings = data.rankings;
-    });
+    this.$axios
+      .get(url, config)
+      .then(response => {
+        let data = response.data;
+        console.log(data);
+        this.rankings = data.rankings;
+      })
+      .catch(function(error) {
+        console.log(error.config);
+      });
   }
 };
 </script>
