@@ -47,7 +47,7 @@ export default new Vuex.Store({
   },
   mutations: {
     newMatchPlayers: (state, value) => (state.newMatch.players = value),
-    setRankings: (state, payload) => (state.rankings = payload)
+    setRankings: (state, payload) => (state.rankings = payload.rankings)
   },
   actions: {
     addNewMatchPlayers: ({ commit }, value) => commit('newMatchPlayers', value),
@@ -60,7 +60,7 @@ export default new Vuex.Store({
       Vue.prototype.$axios
         .get(url, config)
         .then(response => {
-          commit('setRankings', response.data.rankings);
+          commit('setRankings', response.data);
         })
         .catch(function(error) {
           console.log(error.config);
