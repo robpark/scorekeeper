@@ -1,17 +1,21 @@
 <template>
-  <div class="rankings">
-    <h1>Rankings</h1>
-    <ul>
-      <li v-for="ranking in getTop10s" :key="ranking.id">
-        {{ ranking.name }}
+  <v-container class="rankings">
+    <h1>Pro Tennis Top 10s</h1>
+    <v-row>
+      <v-col v-for="ranking in getTop10s" :key="ranking.id">
         <ul>
-          <li v-for="playerRanking in ranking.player_rankings" :key="playerRanking.id">
-            {{ playerRanking.rank }}. {{ playerRanking.player.name }}
+          <li>
+            {{ ranking.name }}
+            <ul>
+              <li v-for="playerRanking in ranking.player_rankings" :key="playerRanking.id">
+                {{ playerRanking.rank }}. {{ playerRanking.player.name }}
+              </li>
+            </ul>
           </li>
         </ul>
-      </li>
-    </ul>
-  </div>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
