@@ -12,9 +12,6 @@
 
 <script>
 export default {
-  name: 'Home',
-  created() {
-    console.log(this.$store);
-  }
+  name: 'Home'
 };
 </script>

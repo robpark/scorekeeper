@@ -11,11 +11,6 @@ const routes = [
     component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
   },
   {
-    path: '/profile',
-    name: 'Profile',
-    component: () => import(/* webpackChunkName: "profile" */ '../views/Profile.vue')
-  },
-  {
     path: '/match',
     name: 'Match',
     component: () => import(/* webpackChunkName: "match" */ '../views/Match.vue')
@@ -24,12 +19,6 @@ const routes = [
     path: '/ranking',
     name: 'Ranking',
     component: () => import(/* webpackChunkName: "ranking" */ '../views/Ranking.vue'),
-    beforeEnter: authGuard
-  },
-  {
-    path: '/scorer',
-    name: 'Scorer',
-    component: () => import(/* webpackChunkName: "scorer" */ '../views/Scorer.vue'),
     beforeEnter: authGuard
   },
   {

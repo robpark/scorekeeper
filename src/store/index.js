@@ -5,45 +5,17 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    players: ['Djokovic', 'Federer', 'Nadal'],
-    matches: [
+    rankings: [],
+    top10s: [
       {
-        players: ['Federer', 'Nadal'],
-        result: [2, 1],
-        sets: [
-          {
-            result: [6, 3],
-            games: [
-              [
-                [0, 15],
-                [15, 15],
-                [30, 15],
-                [40, 15]
-              ]
-            ]
-          },
-          {
-            result: [3, 6],
-            games: []
-          },
-          {
-            result: [7, 6],
-            games: []
-          }
-        ]
+        name: 'WTA',
+        player_rankings: []
+      },
+      {
+        name: 'ATP',
+        player_rankings: []
       }
-    ],
-    newMatch: {
-      players: ['Player 1', 'Player 2'],
-      result: [0, 0],
-      sets: [
-        {
-          result: [0, 0],
-          games: [[0, 0]]
-        }
-      ]
-    },
-    rankings: []
+    ]
   },
   mutations: {
     newMatchPlayers: (state, value) => (state.newMatch.players = value),
@@ -73,9 +45,16 @@ export default new Vuex.Store({
     newMatchData: state => state.newMatch,
     getRankings: state => state.rankings,
     getTop10s: state => {
-      let top10s = state.rankings;
-      top10s[0].player_rankings = state.rankings[0].player_rankings.slice(0, 10);
-      top10s[1].player_rankings = state.rankings[1].player_rankings.slice(0, 10);
+      let top10s = state.top10s;
+      if (top10s[0].player_rankings.length === 10) {
+        return top10s;
+      }
+      if (state.rankings.length === 2) {
+        top10s[0].name = state.rankings[0].name;
+        top10s[0].player_rankings = state.rankings[0].player_rankings.slice(0, 10);
+        top10s[1].name = state.rankings[1].name;
+        top10s[1].player_rankings = state.rankings[1].player_rankings.slice(0, 10);
+      }
       return top10s;
     }
   },

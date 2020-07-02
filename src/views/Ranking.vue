@@ -19,9 +19,6 @@ import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'Ranking',
-  data() {
-    return {};
-  },
   computed: {
     ...mapGetters(['getTop10s'])
   },
