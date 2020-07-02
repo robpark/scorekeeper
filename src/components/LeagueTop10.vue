@@ -1,14 +1,14 @@
 <template>
-  <ul>
-    <li>
-      {{ ranking.name }}
-      <ul>
+  <v-card>
+    <v-card-title>{{ ranking.name }}</v-card-title>
+    <v-card-text>
+      <ol>
         <li v-for="playerRanking in ranking.player_rankings" :key="playerRanking.id">
-          {{ playerRanking.rank }}. {{ playerRanking.player.name }}
+          {{ playerRanking.player.name }}
         </li>
-      </ul>
-    </li>
-  </ul>
+      </ol>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>
