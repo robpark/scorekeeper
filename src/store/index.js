@@ -71,7 +71,13 @@ export default new Vuex.Store({
     matches: state => state.matches,
     players: state => state.players,
     newMatchData: state => state.newMatch,
-    getRankings: state => state.rankings
+    getRankings: state => state.rankings,
+    getTop10s: state => {
+      let top10s = state.rankings;
+      top10s[0].player_rankings = state.rankings[0].player_rankings.slice(0, 10);
+      top10s[1].player_rankings = state.rankings[1].player_rankings.slice(0, 10);
+      return top10s;
+    }
   },
   modules: {}
 });

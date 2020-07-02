@@ -2,7 +2,7 @@
   <div class="rankings">
     <h1>Rankings</h1>
     <ul>
-      <li v-for="ranking in getRankings" :key="ranking.id">
+      <li v-for="ranking in getTop10s" :key="ranking.id">
         {{ ranking.name }}
         <ul>
           <li v-for="playerRanking in ranking.player_rankings" :key="playerRanking.id">
@@ -23,7 +23,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(['getRankings'])
+    ...mapGetters(['getTop10s'])
   },
   methods: {
     ...mapActions(['setRankings'])
