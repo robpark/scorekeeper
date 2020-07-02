@@ -3,16 +3,7 @@
     <h1>Pro Tennis Top 10s</h1>
     <v-row>
       <v-col v-for="ranking in getTop10s" :key="ranking.id">
-        <ul>
-          <li>
-            {{ ranking.name }}
-            <ul>
-              <li v-for="playerRanking in ranking.player_rankings" :key="playerRanking.id">
-                {{ playerRanking.rank }}. {{ playerRanking.player.name }}
-              </li>
-            </ul>
-          </li>
-        </ul>
+        <LeagueTop10 :ranking="ranking" />
       </v-col>
     </v-row>
   </v-container>
@@ -20,9 +11,11 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
+import LeagueTop10 from "../components/LeagueTop10";
 
 export default {
   name: 'Ranking',
+  components: { LeagueTop10 },
   computed: {
     ...mapGetters(['getTop10s'])
   },
@@ -35,4 +28,3 @@ export default {
 };
 </script>
 
-<style scoped></style>
